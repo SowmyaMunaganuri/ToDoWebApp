@@ -14,15 +14,9 @@ const Login = () => {
     function login(e){
       e.preventDefault()  //helps in not refreshing the whole page
         localStorage.setItem('isloggedin' ,true)
-        isAuth(e);
-    }
-
-    function isAuth(e){
         let auth=localStorage.getItem('isloggedin')
         setLoginStatus(auth)
-        e.preventDefault()
     }
-
     return ( 
     <Fragment>
     {isloggedin ? <Redirect to='/todo' /> : <Redirect to='/' /> }

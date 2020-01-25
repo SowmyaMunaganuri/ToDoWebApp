@@ -19,7 +19,6 @@ const Todolist=()=>{
         e.preventDefault();
     }
     function handleLogout(){
-        console.log("Logout requested");
         localStorage.setItem('islogout' ,true);
         let auth=localStorage.getItem('islogout')
         setLogoutStatus(auth)

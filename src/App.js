@@ -3,13 +3,6 @@ import { BrowserRouter as Router,Route} from 'react-router-dom';
 import './App.css';
 import Login from './components/Login'
 import Todolist from './components/Todolist';
-/*function App() {
-  return (
-    <div className="App">
-      <Todolist/>
-    </div>
-  );
-}*/
 
 function App()
 {
