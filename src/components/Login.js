@@ -19,13 +19,8 @@ const Login = () => {
     }
     return ( 
     <Fragment>
-<<<<<<< HEAD
     {isloggedin ? <Redirect to='/todo' /> : <Redirect to='/' /> }
       <section className="landing-inner">
-=======
-    {localStorage.getItem('isloggedin') ? <Redirect to='/todo' /> : <Redirect to='/' /> }
-        <section className="landing-inner">
->>>>>>> c8a7622054f2345edf2f22a80770e4e2b760ec75
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead"><i className="fas fa-user"></i> Sign into Your Account</p>
       <form className="form" onSubmit={login}>

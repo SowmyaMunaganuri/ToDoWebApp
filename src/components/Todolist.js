@@ -19,7 +19,6 @@ const Todolist=()=>{
         e.preventDefault();
         console.log(items)
     }
-<<<<<<< HEAD
     function handleLogout(e){
         e.preventDefault()
         localStorage.setItem('isloggedout' ,true)
@@ -32,17 +31,6 @@ const Todolist=()=>{
         return(
             <Fragment>
             {isloggedout ? <Redirect to='/' /> : <Redirect to='/todo' /> }
-=======
-    function handleLogout(){
-        // localStorage.setItem('islogout' ,true);
-        localStorage.removeItem('isloggedin')
-        let auth=localStorage.getItem('islogout')
-        setLogoutStatus(auth)
-    }
-        return(
-            <Fragment>
-            {localStorage.getItem('isloggedin') ? <Redirect to='/todo' /> : <Redirect to='/' /> }
->>>>>>> c8a7622054f2345edf2f22a80770e4e2b760ec75
             <div className="todoListMain">
                 <div className="header">
                     <form>
