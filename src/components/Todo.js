@@ -1,21 +1,25 @@
-import React from 'react';
-
+import React, { Fragment } from 'react';
+import Item from './Item'
 class Todo extends React.Component{
-    selectitem(i){
-    return (
-        <li key={i.key}>{i.text}</li>
-    )
+    
+    handleDelete=itemid=>{
+        var newitems=this.props.list.filter(item=>item.key!==itemid);
+        this.props.callback(newitems)
     }
     render(){
-        var todoitems=this.props.list;
-        var listitems=todoitems.map(this.selectitem);
         return(
-            <div>
-            <ul className="theList">
-                {listitems}
-            </ul>
-
-            </div>
+            <Fragment>
+                {
+                    this.props.list.map(item=>(
+                        <Item 
+                        key={item.key}
+                        value={item.text}
+                        handleDelete={this.handleDelete}
+                        id={item.key}
+                        />
+                    ))
+                }
+                </Fragment>
         )
     }
 }

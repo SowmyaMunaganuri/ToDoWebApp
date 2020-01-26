@@ -3,7 +3,7 @@ import '../App.css'
 import Todo from './Todo'
 import {Redirect} from "react-router-dom"
 const Todolist=()=>{
-    const[islogout,setLogoutStatus]=useState(false)
+    const[isloggedout,setLogoutStatus]=useState(false)
     const[items,setItem]=useState([])
     let textf="";
     function handleClick(e){
@@ -17,23 +17,29 @@ const Todolist=()=>{
         textf.value = "";
         }
         e.preventDefault();
+        console.log(items)
     }
-    function handleLogout(){
-        localStorage.setItem('islogout' ,true);
-        let auth=localStorage.getItem('islogout')
-        setLogoutStatus(auth)
+    function handleLogout(e){
+        e.preventDefault()
+        localStorage.setItem('isloggedout' ,true)
+        setLogoutStatus(localStorage.getItem('isloggedout'))
+        localStorage.setItem('isloggedout' ,false)
+    }
+    function callback(newlist){
+        setItem(newlist)
     }
         return(
             <Fragment>
-            {islogout ? <Redirect to='/' /> : <Redirect to='/todo' /> }
+            {isloggedout ? <Redirect to='/' /> : <Redirect to='/todo' /> }
             <div className="todoListMain">
                 <div className="header">
                     <form>
                     <input placeholder="enter item here" ref={(input)=>{textf=input}}/>
                     <button type="submit"  onClick={handleClick}>ADD</button>
-                    <button type="danger" onClick={handleLogout}>Logout</button>
-                    <Todo list={items}/>
-                    
+                    <button type="submit" onClick={handleLogout}>Logout</button>
+                            <Todo list={items}
+                            callback={callback}
+                            />
                     </form>
                 </div>
             </div>

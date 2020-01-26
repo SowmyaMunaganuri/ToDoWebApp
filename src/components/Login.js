@@ -14,16 +14,16 @@ const Login = () => {
     function login(e){
       e.preventDefault()  //helps in not refreshing the whole page
         localStorage.setItem('isloggedin' ,true)
-        let auth=localStorage.getItem('isloggedin')
-        setLoginStatus(auth)
+       setLoginStatus(localStorage.getItem('isloggedin'))
+       localStorage.setItem('isloggedin' ,false)
     }
     return ( 
     <Fragment>
     {isloggedin ? <Redirect to='/todo' /> : <Redirect to='/' /> }
-        <section className="landing-inner">
+      <section className="landing-inner">
       <h1 className="large text-primary">Sign In</h1>
       <p className="lead"><i className="fas fa-user"></i> Sign into Your Account</p>
-      <form className="form">
+      <form className="form" onSubmit={login}>
         <div className="form-group">
           <input type="email" placeholder="Email Address" name="email" value={email} 
           onChange={e=>onChange(e)}
@@ -40,7 +40,7 @@ const Login = () => {
           required
           />
         </div>
-        <input type="submit" className="btn btn-primary" value="Login" onClick={login}/>
+        <input type="submit" className="btn btn-primary" value="Login" />
       </form>
       </section>
     </Fragment>

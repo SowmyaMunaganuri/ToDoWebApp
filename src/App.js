@@ -4,16 +4,22 @@ import './App.css';
 import Login from './components/Login'
 import Todolist from './components/Todolist';
 
-function App()
+const App=()=>
 {
+
   return (
-    <Router>
       <Fragment>
-        <Route exact path="/" component={Login}/>
-        <Route path="/todo" component={Todolist} />
+        <Router>
+        <Route 
+        path="/todo"
+        component={Todolist}/>
+        <Route 
+        exact path="/" 
+        component={Login} />
+        
+        </Router>
       </Fragment>
-      </Router>
   )
-}
+  }
 
 export default App;
