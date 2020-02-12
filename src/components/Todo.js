@@ -1,27 +1,48 @@
-import React, { Fragment } from 'react';
+import React,{ Fragment } from 'react'
 import Item from './Item'
-class Todo extends React.Component{
-    
-    handleDelete=itemid=>{
-        var newitems=this.props.list.filter(item=>item.key!==itemid);
-        this.props.callback(newitems)
+const Todo =(props)=>{
+   function handleDelete(itemid){
+        var newitems=props.list.filter(item=>item.key!==itemid);
+        props.callback(newitems)
     }
-    render(){
+   function handleUpdate(itemid,newvalue){
+    var newitems=props.list.filter(item=>item.key!==itemid);
+        var newItem={
+            text:newvalue,
+            key:itemid
+        }
+        var items=newitems.concat(newItem);
+        props.callback(items)        
+    }
+
+    /*function handleUpdate(itemid,newvalue)
+    {
+        props.list.map(i=>
+            { i.key===itemid ?
+                i.text=newvalue
+                :
+                i.text=i.text
+            }
+        )
+        var newitems=props.list;
+            props.updatecall(newitems)
+        }*/
+      
         return(
             <Fragment>
                 {
-                    this.props.list.map(item=>(
+                    props.list.map(item=>(
                         <Item 
                         key={item.key}
                         value={item.text}
-                        handleDelete={this.handleDelete}
+                        handleDelete={handleDelete}
+                        handleUpdate={handleUpdate}
                         id={item.key}
                         />
                     ))
                 }
                 </Fragment>
         )
-    }
-}
+     }
 
 export default Todo;

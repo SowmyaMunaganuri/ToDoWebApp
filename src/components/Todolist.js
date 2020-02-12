@@ -17,7 +17,6 @@ const Todolist=()=>{
         textf.value = "";
         }
         e.preventDefault();
-        console.log(items)
     }
     function handleLogout(e){
         e.preventDefault()
@@ -27,7 +26,9 @@ const Todolist=()=>{
     }
     function callback(newlist){
         setItem(newlist)
+        console.log(items)
     }
+    console.log(items)
         return(
             <Fragment>
             {isloggedout ? <Redirect to='/' /> : <Redirect to='/todo' /> }
